@@ -16,12 +16,6 @@ pipeline {
                 echo 'Clean the Workspace'
                 sh "mvn install"
             }
-        }
-	stage('Deploy to PROD') {
-            steps {
-                input 'Do you want to continue deployment to PROD?'
-		echo 'Deploy to PROD'		
-            }
         }	
     }
 }
