@@ -11,26 +11,14 @@ pipeline {
                 sh "mvn clean"
             }
         }
-		stage('Compile') {
+    stages {
+	stage('Building the Image') {
             steps {
-                echo 'Compile'
-                sh "mvn clean compile"
+                echo 'Clean the Workspace'
+                sh "mvn install"
             }
         }
-		stage('Test') {
-            steps {
-                echo 'Test'
-                sh "mvn clean compile test"
-				
-            }
-        }
-		stage('Package the Solution') {
-            steps {
-                echo 'Package the Solution'
-                sh "mvn clean compile package"
-            }
-        }
-		stage('Deploy to PROD') {
+	stage('Deploy to PROD') {
             steps {
                 input 'Do you want to continue deployment to PROD?'
 		echo 'Deploy to PROD'		
